@@ -1,14 +1,25 @@
 ﻿Public Class DashboardForm
-    Private Sub btnVendors_Click(sender As Object, e As EventArgs) Handles btnVendors.Click
-        Dim vendorForm As New Form1()
-        vendorForm.Show()
+
+    Private Sub LoadControl(control As UserControl)
+        MainPanel.Controls.Clear()
+        control.Dock = DockStyle.Fill
+        MainPanel.Controls.Add(control)
     End Sub
 
-    Private Sub btnCustomers_Click(sender As Object, e As EventArgs) Handles btnCustomers.Click
-        MessageBox.Show("Customer management not implemented yet.")
+    Private Sub btnVendor_Click(sender As Object, e As EventArgs) Handles btnVendors.Click
+        Dim vendorControl As New VendorControl()
+        LoadControl(vendorControl)
     End Sub
 
-    Private Sub btnProducts_Click(sender As Object, e As EventArgs) Handles btnProducts.Click
-        MessageBox.Show("Product management not implemented yet.")
+    Private Sub btnCustomer_Click(sender As Object, e As EventArgs) Handles btnCustomers.Click
+        Dim customerControl As New CustomerControl()
+        LoadControl(customerControl)
     End Sub
+
+    Private Sub btnProduct_Click(sender As Object, e As EventArgs) Handles btnProducts.Click
+        Dim productControl As New ProductControl()
+        LoadControl(productControl)
+    End Sub
+
+
 End Class

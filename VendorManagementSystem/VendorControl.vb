@@ -1,10 +1,10 @@
 ﻿Imports System.Data
 
-Public Class Form1
+Public Class VendorControl
     Private ReadOnly vendorRepo As New VendorRepository()
     Private currentVendor As Vendor
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub VendorControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadVendors()
         SetFormState(False)
     End Sub
