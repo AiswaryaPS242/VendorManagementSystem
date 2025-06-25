@@ -27,6 +27,8 @@ Partial Class DashboardForm
         btnProducts = New Button()
         MainPanel = New Panel()
         TopPanel = New Panel()
+        btnBackup = New Button()
+        btnPurchaseReport = New Button()
         TopPanel.SuspendLayout()
         SuspendLayout()
         ' 
@@ -66,6 +68,8 @@ Partial Class DashboardForm
         ' 
         ' TopPanel
         ' 
+        TopPanel.Controls.Add(btnPurchaseReport)
+        TopPanel.Controls.Add(btnBackup)
         TopPanel.Controls.Add(btnVendors)
         TopPanel.Controls.Add(btnProducts)
         TopPanel.Controls.Add(btnCustomers)
@@ -73,6 +77,24 @@ Partial Class DashboardForm
         TopPanel.Name = "TopPanel"
         TopPanel.Size = New Size(900, 50)
         TopPanel.TabIndex = 3
+        ' 
+        ' btnBackup
+        ' 
+        btnBackup.Location = New Point(340, 10)
+        btnBackup.Name = "btnBackup"
+        btnBackup.Size = New Size(94, 29)
+        btnBackup.TabIndex = 3
+        btnBackup.Text = "Backup"
+        btnBackup.UseVisualStyleBackColor = True
+        ' 
+        ' btnPurchaseReport
+        ' 
+        btnPurchaseReport.Location = New Point(450, 10)
+        btnPurchaseReport.Name = "btnPurchaseReport"
+        btnPurchaseReport.Size = New Size(122, 29)
+        btnPurchaseReport.TabIndex = 4
+        btnPurchaseReport.Text = "Purchase report"
+        btnPurchaseReport.UseVisualStyleBackColor = True
         ' 
         ' DashboardForm
         ' 
@@ -93,4 +115,6 @@ Partial Class DashboardForm
     Friend WithEvents btnProducts As Button
     Friend WithEvents MainPanel As Panel
     Friend WithEvents TopPanel As Panel
+    Friend WithEvents btnBackup As Button
+    Friend WithEvents btnPurchaseReport As Button
 End Class

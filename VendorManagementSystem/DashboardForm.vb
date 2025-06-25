@@ -1,4 +1,7 @@
-﻿Public Class DashboardForm
+﻿Imports System.Data.SqlClient
+
+
+Public Class DashboardForm
 
     Private Sub LoadControl(control As UserControl)
         MainPanel.Controls.Clear()
@@ -21,5 +24,36 @@
         LoadControl(productControl)
     End Sub
 
+    Private Sub btnBackup_Click(sender As Object, e As EventArgs) Handles btnBackup.Click
+        Using sfd As New SaveFileDialog()
+            sfd.Filter = "Backup files (*.bak)|*.bak"
+            sfd.Title = "Save Backup File"
+            sfd.FileName = "VendorSystemBackup.bak"
+
+            If sfd.ShowDialog() = DialogResult.OK Then
+                Try
+                    ' Update these details as per your SQL setup
+                    Dim connectionString As String = "Data Source=AISHULAP\SQLEXPRESS;Initial Catalog=VendorDB;Integrated Security=True"
+                    Dim backupCommand As String = $"BACKUP DATABASE [VendorDB] TO DISK = 'D:\backup\bu\IMS.bak '"
+
+                    Using con As New SqlConnection(connectionString)
+                        con.Open()
+                        Using cmd As New SqlCommand(backupCommand, con)
+                            cmd.ExecuteNonQuery()
+                        End Using
+                    End Using
+
+                    MessageBox.Show("Backup successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Catch ex As Exception
+                    MessageBox.Show("Backup failed: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
+            End If
+        End Using
+    End Sub
+
+    Private Sub btnPurchaseReport_Click(sender As Object, e As EventArgs) Handles btnPurchaseReport.Click
+        LoadControl(New PurchaseReportControl())
+    End Sub
 
 End Class
