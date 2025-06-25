@@ -30,22 +30,27 @@
 
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If dgvProducts.SelectedRows.Count > 0 Then
-            Dim row = dgvProducts.SelectedRows(0)
-            row.Cells(0).Value = txtProductID.Text
-            row.Cells(1).Value = txtProductName.Text
-            row.Cells(2).Value = txtCategory.Text
-            row.Cells(3).Value = txtPrice.Text
-            ClearFields()
-        End If
+        currentProduct = New Product With {
+        .ID = CInt(txtProductID.Text),
+        .Name = txtProductName.Text,
+        .Category = txtCategory.Text,
+        .Price = CDec(txtPrice.Text)
+    }
+
+        productRepo.UpdateProduct(currentProduct)
+        dgvProducts.DataSource = productRepo.GetAllProducts()
+        ClearFields()
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If dgvProducts.SelectedRows.Count > 0 Then
-            dgvProducts.Rows.Remove(dgvProducts.SelectedRows(0))
+            Dim selectedID As Integer = CInt(dgvProducts.SelectedRows(0).Cells(0).Value)
+            productRepo.DeleteProduct(selectedID)
+            dgvProducts.DataSource = productRepo.GetAllProducts()
             ClearFields()
         End If
     End Sub
+
 
     Private Sub dgvProducts_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvProducts.CellClick
         If e.RowIndex >= 0 Then

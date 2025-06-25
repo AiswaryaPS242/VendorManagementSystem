@@ -56,6 +56,11 @@ Public Class DashboardForm
         LoadControl(New PurchaseReportControl())
     End Sub
 
+    Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LoadControl(New DashboardHomeControl())
+    End Sub
+
+
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         Dim result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout",
                                      MessageBoxButtons.YesNo, MessageBoxIcon.Question)

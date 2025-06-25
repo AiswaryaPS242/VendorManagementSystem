@@ -15,11 +15,6 @@ Public Class PurchaseReportControl
         dgvReport.Columns.Add("Date", "Date")
 
         RefreshReportTable()
-
-
-        ' Dummy data
-        dgvReport.Rows.Add("PI", "1", "Test Vendor", "5000", "2025-06-01")
-        dgvReport.Rows.Add("PI", "2", "Test Vendor", "12000", "2025-06-05")
     End Sub
     Private Sub RefreshReportTable()
         dgvReport.Rows.Clear()
@@ -71,13 +66,16 @@ Public Class PurchaseReportControl
 
         For Each row As DataGridViewRow In dgvReport.Rows
             If row.Cells("Amount").Value IsNot Nothing Then
-                Decimal.TryParse(row.Cells("Amount").Value.ToString(), total)
-                total += CDec(row.Cells("Amount").Value)
+                Dim value As Decimal
+                If Decimal.TryParse(row.Cells("Amount").Value.ToString(), value) Then
+                    total += value ' Only add once
+                End If
             End If
         Next
 
         lblTotalAmount.Text = "Total: ₹" & total.ToString("N2")
     End Sub
+
 
 
     Private Sub btnExportExcel_Click(sender As Object, e As EventArgs) Handles btnExportExcel.Click

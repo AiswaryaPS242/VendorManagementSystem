@@ -1,44 +1,67 @@
-﻿Public Class ProductRepository
-    Private products As New DataTable()
+﻿Imports System.Data.SqlClient
+Imports System.Data
 
-    Public Sub New()
-        products.Columns.Add("ID", GetType(Integer))
-        products.Columns.Add("ProductName", GetType(String))
-        products.Columns.Add("Category", GetType(String))
-        products.Columns.Add("Price", GetType(Decimal))
-    End Sub
-
-    Public Function GetAllProducts() As DataTable
-        Return products
-    End Function
+Public Class ProductRepository
+    Private ReadOnly connectionString As String = "Server=AISHULAP\SQLEXPRESS;Database=VendorDB;Integrated Security=True;"
 
     Public Function GetNextID() As Integer
-        If products.Rows.Count = 0 Then
-            Return 1
-        Else
-            Dim maxID = products.AsEnumerable().Max(Function(row) row.Field(Of Integer)("ID"))
-            Return maxID + 1
-        End If
+        Using con As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("SELECT ISNULL(MAX(ID), 0) + 1 FROM Setup.Product", con)
+            con.Open()
+            Return CInt(cmd.ExecuteScalar())
+        End Using
+    End Function
+
+    Public Function GetAllProducts() As DataTable
+        Dim dt As New DataTable()
+        Using con As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("SELECT * FROM Setup.Product", con)
+            con.Open()
+            dt.Load(cmd.ExecuteReader())
+        End Using
+        Return dt
     End Function
 
     Public Sub AddProduct(product As Product)
-        products.Rows.Add(product.ID, product.Name, product.Category, product.Price)
+        Using con As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand(
+                "INSERT INTO Setup.Product (ID, ProductName, Category, Price) " &
+                "VALUES (@ID, @ProductName, @Category, @Price)", con)
+
+            cmd.Parameters.AddWithValue("@ID", product.ID)
+            cmd.Parameters.AddWithValue("@ProductName", product.Name)
+            cmd.Parameters.AddWithValue("@Category", product.Category)
+            cmd.Parameters.AddWithValue("@Price", product.Price)
+
+            con.Open()
+            cmd.ExecuteNonQuery()
+        End Using
     End Sub
 
     Public Sub UpdateProduct(product As Product)
-        Dim row = products.Select("ID = " & product.ID).FirstOrDefault()
-        If row IsNot Nothing Then
-            row("ProductName") = product.Name
-            row("Category") = product.Category
-            row("Price") = product.Price
-        End If
+        Using con As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand(
+                "UPDATE Setup.Product SET ProductName = @ProductName, Category = @Category, " &
+                "Price = @Price WHERE ID = @ID", con)
+
+            cmd.Parameters.AddWithValue("@ID", product.ID)
+            cmd.Parameters.AddWithValue("@ProductName", product.Name)
+            cmd.Parameters.AddWithValue("@Category", product.Category)
+            cmd.Parameters.AddWithValue("@Price", product.Price)
+
+            con.Open()
+            cmd.ExecuteNonQuery()
+        End Using
     End Sub
 
     Public Sub DeleteProduct(id As Integer)
-        Dim row = products.Select("ID = " & id).FirstOrDefault()
-        If row IsNot Nothing Then
-            products.Rows.Remove(row)
-        End If
+        Using con As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("DELETE FROM Setup.Product WHERE ID = @ID", con)
+            cmd.Parameters.AddWithValue("@ID", id)
+
+            con.Open()
+            cmd.ExecuteNonQuery()
+        End Using
     End Sub
 End Class
 
