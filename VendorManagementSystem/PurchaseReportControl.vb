@@ -32,6 +32,7 @@ Public Class PurchaseReportControl
             report.DateOfPurchase.ToShortDateString()
         )
         Next
+        UpdateTotal()
     End Sub
 
     Private Sub btnAddReport_Click(sender As Object, e As EventArgs) Handles btnAddReport.Click
@@ -57,11 +58,25 @@ Public Class PurchaseReportControl
 
         repo.Add(newReport)
         RefreshReportTable()
+        UpdateTotal()
 
         ' Optional: Clear fields
         txtVendor.Clear()
         txtAmount.Clear()
         dtpDate.Value = Date.Today
+    End Sub
+
+    Private Sub UpdateTotal()
+        Dim total As Decimal = 0
+
+        For Each row As DataGridViewRow In dgvReport.Rows
+            If row.Cells("Amount").Value IsNot Nothing Then
+                Decimal.TryParse(row.Cells("Amount").Value.ToString(), total)
+                total += CDec(row.Cells("Amount").Value)
+            End If
+        Next
+
+        lblTotalAmount.Text = "Total: ₹" & total.ToString("N2")
     End Sub
 
 

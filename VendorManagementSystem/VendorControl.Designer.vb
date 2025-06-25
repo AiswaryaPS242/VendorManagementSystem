@@ -37,6 +37,8 @@ Partial Class VendorControl
         btnUpdate = New Button()
         btnDelete = New Button()
         dgvVendors = New DataGridView()
+        Label6 = New Label()
+        txtSearch = New TextBox()
         CType(dgvVendors, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -165,10 +167,28 @@ Partial Class VendorControl
         dgvVendors.Size = New Size(700, 250)
         dgvVendors.TabIndex = 14
         ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Location = New Point(450, 235)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(57, 20)
+        Label6.TabIndex = 15
+        Label6.Text = "Search "
+        ' 
+        ' txtSearch
+        ' 
+        txtSearch.Location = New Point(520, 230)
+        txtSearch.Name = "txtSearch"
+        txtSearch.Size = New Size(200, 27)
+        txtSearch.TabIndex = 16
+        ' 
         ' VendorControl
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(txtSearch)
+        Controls.Add(Label6)
         Controls.Add(dgvVendors)
         Controls.Add(btnDelete)
         Controls.Add(btnUpdate)
@@ -206,5 +226,7 @@ Partial Class VendorControl
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents dgvVendors As DataGridView
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtSearch As TextBox
 
 End Class

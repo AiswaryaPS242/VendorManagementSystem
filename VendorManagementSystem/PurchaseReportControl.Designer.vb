@@ -31,6 +31,7 @@ Partial Class PurchaseReportControl
         Label1 = New Label()
         Label2 = New Label()
         Label3 = New Label()
+        lblTotalAmount = New Label()
         CType(dgvReport, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -120,10 +121,21 @@ Partial Class PurchaseReportControl
         Label3.TabIndex = 8
         Label3.Text = "Date"
         ' 
+        ' lblTotalAmount
+        ' 
+        lblTotalAmount.AutoSize = True
+        lblTotalAmount.Font = New Font("Microsoft Sans Serif", 10F)
+        lblTotalAmount.Location = New Point(200, 330)
+        lblTotalAmount.Name = "lblTotalAmount"
+        lblTotalAmount.Size = New Size(96, 20)
+        lblTotalAmount.TabIndex = 9
+        lblTotalAmount.Text = "Total: ₹0.00"
+        ' 
         ' PurchaseReportControl
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(lblTotalAmount)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
@@ -149,5 +161,6 @@ Partial Class PurchaseReportControl
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents lblTotalAmount As Label
 
 End Class

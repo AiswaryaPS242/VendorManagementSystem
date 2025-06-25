@@ -1,6 +1,7 @@
 ﻿Imports System.Data
 
 Public Class VendorControl
+    Private allVendors As DataTable
     Private ReadOnly vendorRepo As New VendorRepository()
     Private currentVendor As Vendor
 
@@ -11,8 +12,10 @@ Public Class VendorControl
 
     ' Load all vendors into DataGridView
     Private Sub LoadVendors()
-        dgvVendors.DataSource = vendorRepo.GetAllVendors()
+        allVendors = vendorRepo.GetAllVendors().Copy()
+        dgvVendors.DataSource = allVendors
     End Sub
+
 
     ' Clear form fields
     Private Sub ClearForm()
@@ -140,4 +143,22 @@ Public Class VendorControl
             End Try
         End If
     End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        Dim searchText As String = txtSearch.Text.Trim().ToLower()
+
+        If String.IsNullOrEmpty(searchText) Then
+            dgvVendors.DataSource = allVendors
+        Else
+            Dim filtered = allVendors.AsEnumerable().
+                Where(Function(row) row.Field(Of String)("VendorName").ToLower().Contains(searchText))
+
+            If filtered.Any() Then
+                dgvVendors.DataSource = filtered.CopyToDataTable()
+            Else
+                dgvVendors.DataSource = allVendors.Clone() ' Empty with same structure
+            End If
+        End If
+    End Sub
+
 End Class

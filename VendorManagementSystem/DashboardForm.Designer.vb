@@ -27,8 +27,9 @@ Partial Class DashboardForm
         btnProducts = New Button()
         MainPanel = New Panel()
         TopPanel = New Panel()
-        btnBackup = New Button()
         btnPurchaseReport = New Button()
+        btnBackup = New Button()
+        btnLogout = New Button()
         TopPanel.SuspendLayout()
         SuspendLayout()
         ' 
@@ -68,6 +69,7 @@ Partial Class DashboardForm
         ' 
         ' TopPanel
         ' 
+        TopPanel.Controls.Add(btnLogout)
         TopPanel.Controls.Add(btnPurchaseReport)
         TopPanel.Controls.Add(btnBackup)
         TopPanel.Controls.Add(btnVendors)
@@ -78,6 +80,15 @@ Partial Class DashboardForm
         TopPanel.Size = New Size(900, 50)
         TopPanel.TabIndex = 3
         ' 
+        ' btnPurchaseReport
+        ' 
+        btnPurchaseReport.Location = New Point(450, 10)
+        btnPurchaseReport.Name = "btnPurchaseReport"
+        btnPurchaseReport.Size = New Size(122, 29)
+        btnPurchaseReport.TabIndex = 4
+        btnPurchaseReport.Text = "Purchase report"
+        btnPurchaseReport.UseVisualStyleBackColor = True
+        ' 
         ' btnBackup
         ' 
         btnBackup.Location = New Point(340, 10)
@@ -87,14 +98,14 @@ Partial Class DashboardForm
         btnBackup.Text = "Backup"
         btnBackup.UseVisualStyleBackColor = True
         ' 
-        ' btnPurchaseReport
+        ' btnLogout
         ' 
-        btnPurchaseReport.Location = New Point(450, 10)
-        btnPurchaseReport.Name = "btnPurchaseReport"
-        btnPurchaseReport.Size = New Size(122, 29)
-        btnPurchaseReport.TabIndex = 4
-        btnPurchaseReport.Text = "Purchase report"
-        btnPurchaseReport.UseVisualStyleBackColor = True
+        btnLogout.Location = New Point(800, 10)
+        btnLogout.Name = "btnLogout"
+        btnLogout.Size = New Size(80, 30)
+        btnLogout.TabIndex = 5
+        btnLogout.Text = "Logout"
+        btnLogout.UseVisualStyleBackColor = True
         ' 
         ' DashboardForm
         ' 
@@ -117,4 +128,5 @@ Partial Class DashboardForm
     Friend WithEvents TopPanel As Panel
     Friend WithEvents btnBackup As Button
     Friend WithEvents btnPurchaseReport As Button
+    Friend WithEvents btnLogout As Button
 End Class
