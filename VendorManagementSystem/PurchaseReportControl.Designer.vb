@@ -1,166 +1,200 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class PurchaseReportControl
     Inherits System.Windows.Forms.UserControl
 
-    'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
-    End Sub
-
-    'Required by the Windows Form Designer
+    ' Required by the Windows Form Designer
     Private components As System.ComponentModel.IContainer
 
-    'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
-    'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    ' NOTE: The following procedure is required by the Windows Form Designer
+    ' It can be modified using the Windows Form Designer.  
+    ' Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        dgvReport = New DataGridView()
-        btnExportExcel = New Button()
+        txtTransactionID = New TextBox()
         txtVendor = New TextBox()
         txtAmount = New TextBox()
         dtpDate = New DateTimePicker()
-        btnAddReport = New Button()
-        Label1 = New Label()
-        Label2 = New Label()
-        Label3 = New Label()
+        btnNew = New Button()
+        btnSave = New Button()
+        btnUpdate = New Button()
+        btnDelete = New Button()
+        btnExportExcel = New Button()
+        dgvReport = New DataGridView()
         lblTotalAmount = New Label()
+        lblTransactionID = New Label()
+        lblVendor = New Label()
+        lblAmount = New Label()
+        lblDate = New Label()
         CType(dgvReport, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
+        ' 
+        ' txtTransactionID
+        ' 
+        txtTransactionID.Location = New Point(20, 35)
+        txtTransactionID.Name = "txtTransactionID"
+        txtTransactionID.Size = New Size(130, 27)
+        txtTransactionID.TabIndex = 0
+        ' 
+        ' txtVendor
+        ' 
+        txtVendor.Location = New Point(170, 35)
+        txtVendor.Name = "txtVendor"
+        txtVendor.Size = New Size(130, 27)
+        txtVendor.TabIndex = 1
+        ' 
+        ' txtAmount
+        ' 
+        txtAmount.Location = New Point(320, 35)
+        txtAmount.Name = "txtAmount"
+        txtAmount.Size = New Size(130, 27)
+        txtAmount.TabIndex = 2
+        ' 
+        ' dtpDate
+        ' 
+        dtpDate.CustomFormat = "dd   MMMM   yyyy"
+        dtpDate.Format = DateTimePickerFormat.Custom
+        dtpDate.Location = New Point(470, 35)
+        dtpDate.Name = "dtpDate"
+        dtpDate.Size = New Size(160, 27)
+        dtpDate.TabIndex = 3
+        ' 
+        ' btnNew
+        ' 
+        btnNew.Location = New Point(636, 14)
+        btnNew.Name = "btnNew"
+        btnNew.Size = New Size(75, 23)
+        btnNew.TabIndex = 8
+        btnNew.Text = "New"
+        ' 
+        ' btnSave
+        ' 
+        btnSave.Location = New Point(703, 15)
+        btnSave.Name = "btnSave"
+        btnSave.Size = New Size(75, 23)
+        btnSave.TabIndex = 9
+        btnSave.Text = "Save"
+        ' 
+        ' btnUpdate
+        ' 
+        btnUpdate.Location = New Point(636, 37)
+        btnUpdate.Name = "btnUpdate"
+        btnUpdate.Size = New Size(75, 23)
+        btnUpdate.TabIndex = 10
+        btnUpdate.Text = "Update"
+        ' 
+        ' btnDelete
+        ' 
+        btnDelete.Location = New Point(703, 37)
+        btnDelete.Name = "btnDelete"
+        btnDelete.Size = New Size(75, 23)
+        btnDelete.TabIndex = 11
+        btnDelete.Text = "Delete"
+        ' 
+        ' btnExportExcel
+        ' 
+        btnExportExcel.Location = New Point(140, 375)
+        btnExportExcel.Name = "btnExportExcel"
+        btnExportExcel.Size = New Size(120, 30)
+        btnExportExcel.TabIndex = 14
+        btnExportExcel.Text = "Export to Excel"
         ' 
         ' dgvReport
         ' 
         dgvReport.AllowUserToAddRows = False
         dgvReport.AllowUserToDeleteRows = False
-        dgvReport.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        dgvReport.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        dgvReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvReport.Location = New Point(20, 50)
+        dgvReport.ColumnHeadersHeight = 29
+        dgvReport.Location = New Point(20, 70)
         dgvReport.Name = "dgvReport"
         dgvReport.ReadOnly = True
-        dgvReport.RowHeadersVisible = False
         dgvReport.RowHeadersWidth = 51
         dgvReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvReport.Size = New Size(1449, 267)
-        dgvReport.TabIndex = 0
-        ' 
-        ' btnExportExcel
-        ' 
-        btnExportExcel.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        btnExportExcel.BackColor = SystemColors.GradientActiveCaption
-        btnExportExcel.Location = New Point(20, 330)
-        btnExportExcel.Name = "btnExportExcel"
-        btnExportExcel.Size = New Size(150, 35)
-        btnExportExcel.TabIndex = 1
-        btnExportExcel.Text = "Export to Excel"
-        btnExportExcel.UseVisualStyleBackColor = False
-        ' 
-        ' txtVendor
-        ' 
-        txtVendor.Location = New Point(20, 20)
-        txtVendor.Name = "txtVendor"
-        txtVendor.Size = New Size(125, 27)
-        txtVendor.TabIndex = 2
-        ' 
-        ' txtAmount
-        ' 
-        txtAmount.Location = New Point(250, 20)
-        txtAmount.Name = "txtAmount"
-        txtAmount.Size = New Size(125, 27)
-        txtAmount.TabIndex = 3
-        ' 
-        ' dtpDate
-        ' 
-        dtpDate.CausesValidation = False
-        dtpDate.Location = New Point(480, 20)
-        dtpDate.Name = "dtpDate"
-        dtpDate.Size = New Size(250, 27)
-        dtpDate.TabIndex = 4
-        dtpDate.Tag = ""
-        ' 
-        ' btnAddReport
-        ' 
-        btnAddReport.Location = New Point(750, 20)
-        btnAddReport.Name = "btnAddReport"
-        btnAddReport.Size = New Size(94, 29)
-        btnAddReport.TabIndex = 5
-        btnAddReport.Text = "Add Report"
-        btnAddReport.UseVisualStyleBackColor = True
-        ' 
-        ' Label1
-        ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(20, 0)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(100, 20)
-        Label1.TabIndex = 6
-        Label1.Text = "Vendor Name"
-        ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(250, 0)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(90, 20)
-        Label2.TabIndex = 7
-        Label2.Text = "Net Amount"
-        ' 
-        ' Label3
-        ' 
-        Label3.AutoSize = True
-        Label3.Location = New Point(480, 0)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(41, 20)
-        Label3.TabIndex = 8
-        Label3.Text = "Date"
+        dgvReport.Size = New Size(900, 300)
+        dgvReport.TabIndex = 12
         ' 
         ' lblTotalAmount
         ' 
         lblTotalAmount.AutoSize = True
-        lblTotalAmount.Font = New Font("Microsoft Sans Serif", 10F)
-        lblTotalAmount.Location = New Point(200, 330)
+        lblTotalAmount.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblTotalAmount.Location = New Point(20, 380)
         lblTotalAmount.Name = "lblTotalAmount"
-        lblTotalAmount.Size = New Size(96, 20)
-        lblTotalAmount.TabIndex = 9
+        lblTotalAmount.Size = New Size(104, 23)
+        lblTotalAmount.TabIndex = 13
         lblTotalAmount.Text = "Total: ₹0.00"
+        ' 
+        ' lblTransactionID
+        ' 
+        lblTransactionID.AutoSize = True
+        lblTransactionID.Location = New Point(20, 15)
+        lblTransactionID.Name = "lblTransactionID"
+        lblTransactionID.Size = New Size(103, 20)
+        lblTransactionID.TabIndex = 4
+        lblTransactionID.Text = "Transaction ID"
+        ' 
+        ' lblVendor
+        ' 
+        lblVendor.AutoSize = True
+        lblVendor.Location = New Point(170, 15)
+        lblVendor.Name = "lblVendor"
+        lblVendor.Size = New Size(100, 20)
+        lblVendor.TabIndex = 5
+        lblVendor.Text = "Vendor Name"
+        ' 
+        ' lblAmount
+        ' 
+        lblAmount.AutoSize = True
+        lblAmount.Location = New Point(320, 15)
+        lblAmount.Name = "lblAmount"
+        lblAmount.Size = New Size(90, 20)
+        lblAmount.TabIndex = 6
+        lblAmount.Text = "Net Amount"
+        ' 
+        ' lblDate
+        ' 
+        lblDate.AutoSize = True
+        lblDate.Location = New Point(470, 15)
+        lblDate.Name = "lblDate"
+        lblDate.Size = New Size(41, 20)
+        lblDate.TabIndex = 7
+        lblDate.Text = "Date"
         ' 
         ' PurchaseReportControl
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
-        AutoScaleMode = AutoScaleMode.Font
-        Controls.Add(lblTotalAmount)
-        Controls.Add(Label3)
-        Controls.Add(Label2)
-        Controls.Add(Label1)
-        Controls.Add(btnAddReport)
-        Controls.Add(dtpDate)
-        Controls.Add(txtAmount)
+        Controls.Add(txtTransactionID)
         Controls.Add(txtVendor)
-        Controls.Add(btnExportExcel)
+        Controls.Add(txtAmount)
+        Controls.Add(dtpDate)
+        Controls.Add(lblTransactionID)
+        Controls.Add(lblVendor)
+        Controls.Add(lblAmount)
+        Controls.Add(lblDate)
+        Controls.Add(btnNew)
+        Controls.Add(btnSave)
+        Controls.Add(btnUpdate)
+        Controls.Add(btnDelete)
         Controls.Add(dgvReport)
+        Controls.Add(lblTotalAmount)
+        Controls.Add(btnExportExcel)
         Name = "PurchaseReportControl"
-        Size = New Size(1386, 479)
+        Size = New Size(950, 420)
         CType(dgvReport, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
-    Friend WithEvents dgvReport As DataGridView
-    Friend WithEvents btnExportExcel As Button
+    Friend WithEvents txtTransactionID As TextBox
     Friend WithEvents txtVendor As TextBox
     Friend WithEvents txtAmount As TextBox
     Friend WithEvents dtpDate As DateTimePicker
-    Friend WithEvents btnAddReport As Button
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
+    Friend WithEvents btnNew As Button
+    Friend WithEvents btnSave As Button
+    Friend WithEvents btnUpdate As Button
+    Friend WithEvents btnDelete As Button
+    Friend WithEvents btnExportExcel As Button
+    Friend WithEvents dgvReport As DataGridView
     Friend WithEvents lblTotalAmount As Label
 
+    Friend WithEvents lblTransactionID As Label
+    Friend WithEvents lblVendor As Label
+    Friend WithEvents lblAmount As Label
+    Friend WithEvents lblDate As Label
 End Class

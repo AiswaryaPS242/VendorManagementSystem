@@ -27,11 +27,14 @@
         Dim purchases = purchaseRepo.GetAll()
         Dim totalAmount As Decimal = 0
 
-        For Each purchase In purchases
-            totalAmount += purchase.Amount
+        For Each row As DataRow In purchases.Rows
+            If Not IsDBNull(row("Amount")) Then
+                totalAmount += Convert.ToDecimal(row("Amount"))
+            End If
         Next
 
         lblPurchaseTotal.Text = "₹ " & totalAmount.ToString("N2")
     End Sub
+
 
 End Class
