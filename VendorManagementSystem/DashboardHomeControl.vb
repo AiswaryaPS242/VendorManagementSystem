@@ -4,7 +4,7 @@
     Private ReadOnly vendorRepo As New VendorRepository()
     Private ReadOnly customerRepo As New CustomerRepository()
     Private ReadOnly productRepo As New ProductRepository()
-    Private ReadOnly purchaseRepo As New PurchaseReportRepository()
+    Private ReadOnly purchaseRepo As New PurchaseRepository()
 
     Private Sub DashboardHomeControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         UpdateSummary()
@@ -28,8 +28,8 @@
         Dim totalAmount As Decimal = 0
 
         For Each row As DataRow In purchases.Rows
-            If Not IsDBNull(row("Amount")) Then
-                totalAmount += Convert.ToDecimal(row("Amount"))
+            If Not IsDBNull(row("PurchaseAmount")) Then
+                totalAmount += Convert.ToDecimal(row("PurchaseAmount"))
             End If
         Next
 

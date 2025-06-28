@@ -72,4 +72,16 @@ Public Class DashboardForm
         End If
     End Sub
 
+    Private Sub btnStockTransfer_Click(sender As Object, e As EventArgs) Handles btnStockTransfer.Click
+        Dim control As New StockTransferControl()
+        LoadControl(control)
+    End Sub
+
+    Private Sub btnPurchaseEntry_Click(sender As Object, e As EventArgs) Handles btnPurchaseEntry.Click
+        Dim ctrl As New PurchaseEntryControl()
+        MainPanel.Controls.Clear()
+        MainPanel.Controls.Add(ctrl)
+        ctrl.Dock = DockStyle.Fill
+    End Sub
+
 End Class

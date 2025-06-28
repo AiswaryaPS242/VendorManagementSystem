@@ -25,34 +25,41 @@ Public Class ProductRepository
     Public Sub AddProduct(product As Product)
         Using con As New SqlConnection(connectionString)
             Dim cmd As New SqlCommand(
-                "INSERT INTO Setup.Product (ID, ProductName, Category, Price) " &
-                "VALUES (@ID, @ProductName, @Category, @Price)", con)
+            "INSERT INTO Setup.Product (ID, ProductName, Category, Price, Quantity, WarehouseLocation) " &
+            "VALUES (@ID, @ProductName, @Category, @Price, @Quantity, @Warehouse)", con)
 
             cmd.Parameters.AddWithValue("@ID", product.ID)
             cmd.Parameters.AddWithValue("@ProductName", product.Name)
             cmd.Parameters.AddWithValue("@Category", product.Category)
             cmd.Parameters.AddWithValue("@Price", product.Price)
+            cmd.Parameters.AddWithValue("@Quantity", product.Quantity)
+            cmd.Parameters.AddWithValue("@Warehouse", product.WarehouseLocation)
 
             con.Open()
             cmd.ExecuteNonQuery()
         End Using
     End Sub
+
 
     Public Sub UpdateProduct(product As Product)
         Using con As New SqlConnection(connectionString)
             Dim cmd As New SqlCommand(
-                "UPDATE Setup.Product SET ProductName = @ProductName, Category = @Category, " &
-                "Price = @Price WHERE ID = @ID", con)
+            "UPDATE Setup.Product SET ProductName = @ProductName, Category = @Category, " &
+            "Price = @Price, Quantity = @Quantity, WarehouseLocation = @Warehouse " &
+            "WHERE ID = @ID", con)
 
             cmd.Parameters.AddWithValue("@ID", product.ID)
             cmd.Parameters.AddWithValue("@ProductName", product.Name)
             cmd.Parameters.AddWithValue("@Category", product.Category)
             cmd.Parameters.AddWithValue("@Price", product.Price)
+            cmd.Parameters.AddWithValue("@Quantity", product.Quantity)
+            cmd.Parameters.AddWithValue("@Warehouse", product.WarehouseLocation)
 
             con.Open()
             cmd.ExecuteNonQuery()
         End Using
     End Sub
+
 
     Public Sub DeleteProduct(id As Integer)
         Using con As New SqlConnection(connectionString)
@@ -70,4 +77,6 @@ Public Class Product
     Public Property Name As String
     Public Property Category As String
     Public Property Price As Decimal
+    Public Property Quantity As Integer
+    Public Property WarehouseLocation As String
 End Class

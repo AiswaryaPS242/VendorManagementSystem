@@ -11,7 +11,9 @@
         .ID = CInt(txtProductID.Text),
         .Name = txtProductName.Text,
         .Category = txtCategory.Text,
-        .Price = CDec(txtPrice.Text)
+        .Price = CDec(txtPrice.Text),
+        .Quantity = Integer.Parse(txtQuantity.Text),
+        .WarehouseLocation = cboWarehouse.Text
     }
 
         productRepo.AddProduct(currentProduct)
@@ -25,6 +27,8 @@
         txtProductName.Clear()
         txtCategory.Clear()
         txtPrice.Clear()
+        txtQuantity.Clear()
+        cboWarehouse.SelectedIndex = -1
         txtProductName.Focus()
     End Sub
 
@@ -34,7 +38,9 @@
         .ID = CInt(txtProductID.Text),
         .Name = txtProductName.Text,
         .Category = txtCategory.Text,
-        .Price = CDec(txtPrice.Text)
+        .Price = CDec(txtPrice.Text),
+        .Quantity = Integer.Parse(txtQuantity.Text),
+        .WarehouseLocation = cboWarehouse.Text
     }
 
         productRepo.UpdateProduct(currentProduct)
@@ -59,6 +65,8 @@
             txtProductName.Text = row.Cells(1).Value
             txtCategory.Text = row.Cells(2).Value
             txtPrice.Text = row.Cells(3).Value
+            txtQuantity.Text = row.Cells("Quantity").Value.ToString()
+            cboWarehouse.Text = row.Cells("WarehouseLocation").Value.ToString()
         End If
     End Sub
 
@@ -67,5 +75,9 @@
         txtProductName.Clear()
         txtCategory.Clear()
         txtPrice.Clear()
+        txtQuantity.Clear()
+        cboWarehouse.SelectedIndex = -1
     End Sub
+
+
 End Class

@@ -27,9 +27,11 @@ Partial Class DashboardForm
         btnProducts = New Button()
         MainPanel = New Panel()
         TopPanel = New Panel()
+        btnStockTransfer = New Button()
+        btnLogout = New Button()
         btnPurchaseReport = New Button()
         btnBackup = New Button()
-        btnLogout = New Button()
+        btnPurchaseEntry = New Button()
         TopPanel.SuspendLayout()
         SuspendLayout()
         ' 
@@ -44,7 +46,7 @@ Partial Class DashboardForm
         ' 
         ' btnCustomers
         ' 
-        btnCustomers.Location = New Point(120, 10)
+        btnCustomers.Location = New Point(110, 11)
         btnCustomers.Name = "btnCustomers"
         btnCustomers.Size = New Size(94, 29)
         btnCustomers.TabIndex = 1
@@ -53,7 +55,7 @@ Partial Class DashboardForm
         ' 
         ' btnProducts
         ' 
-        btnProducts.Location = New Point(230, 10)
+        btnProducts.Location = New Point(210, 10)
         btnProducts.Name = "btnProducts"
         btnProducts.Size = New Size(94, 29)
         btnProducts.TabIndex = 2
@@ -69,6 +71,8 @@ Partial Class DashboardForm
         ' 
         ' TopPanel
         ' 
+        TopPanel.Controls.Add(btnPurchaseEntry)
+        TopPanel.Controls.Add(btnStockTransfer)
         TopPanel.Controls.Add(btnLogout)
         TopPanel.Controls.Add(btnPurchaseReport)
         TopPanel.Controls.Add(btnBackup)
@@ -80,23 +84,14 @@ Partial Class DashboardForm
         TopPanel.Size = New Size(900, 50)
         TopPanel.TabIndex = 3
         ' 
-        ' btnPurchaseReport
+        ' btnStockTransfer
         ' 
-        btnPurchaseReport.Location = New Point(450, 10)
-        btnPurchaseReport.Name = "btnPurchaseReport"
-        btnPurchaseReport.Size = New Size(122, 29)
-        btnPurchaseReport.TabIndex = 4
-        btnPurchaseReport.Text = "Purchase report"
-        btnPurchaseReport.UseVisualStyleBackColor = True
-        ' 
-        ' btnBackup
-        ' 
-        btnBackup.Location = New Point(340, 10)
-        btnBackup.Name = "btnBackup"
-        btnBackup.Size = New Size(94, 29)
-        btnBackup.TabIndex = 3
-        btnBackup.Text = "Backup"
-        btnBackup.UseVisualStyleBackColor = True
+        btnStockTransfer.Location = New Point(660, 11)
+        btnStockTransfer.Name = "btnStockTransfer"
+        btnStockTransfer.Size = New Size(114, 29)
+        btnStockTransfer.TabIndex = 4
+        btnStockTransfer.Text = "Stock Transfer"
+        btnStockTransfer.UseVisualStyleBackColor = True
         ' 
         ' btnLogout
         ' 
@@ -106,6 +101,33 @@ Partial Class DashboardForm
         btnLogout.TabIndex = 5
         btnLogout.Text = "Logout"
         btnLogout.UseVisualStyleBackColor = True
+        ' 
+        ' btnPurchaseReport
+        ' 
+        btnPurchaseReport.Location = New Point(410, 11)
+        btnPurchaseReport.Name = "btnPurchaseReport"
+        btnPurchaseReport.Size = New Size(122, 29)
+        btnPurchaseReport.TabIndex = 4
+        btnPurchaseReport.Text = "Purchase report"
+        btnPurchaseReport.UseVisualStyleBackColor = True
+        ' 
+        ' btnBackup
+        ' 
+        btnBackup.Location = New Point(310, 10)
+        btnBackup.Name = "btnBackup"
+        btnBackup.Size = New Size(94, 29)
+        btnBackup.TabIndex = 3
+        btnBackup.Text = "Backup"
+        btnBackup.UseVisualStyleBackColor = True
+        ' 
+        ' btnPurchaseEntry
+        ' 
+        btnPurchaseEntry.Location = New Point(538, 10)
+        btnPurchaseEntry.Name = "btnPurchaseEntry"
+        btnPurchaseEntry.Size = New Size(116, 29)
+        btnPurchaseEntry.TabIndex = 0
+        btnPurchaseEntry.Text = "Purchase Entry"
+        btnPurchaseEntry.UseVisualStyleBackColor = True
         ' 
         ' DashboardForm
         ' 
@@ -129,4 +151,6 @@ Partial Class DashboardForm
     Friend WithEvents btnBackup As Button
     Friend WithEvents btnPurchaseReport As Button
     Friend WithEvents btnLogout As Button
+    Friend WithEvents btnStockTransfer As Button
+    Friend WithEvents btnPurchaseEntry As Button
 End Class
